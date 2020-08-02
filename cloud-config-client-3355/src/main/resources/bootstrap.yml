@@ -1,0 +1,28 @@
+server:
+  port: 3355
+spring:
+  application:
+    name: cloud-config-client
+  cloud:
+    config:
+      label: master #分支
+      name: config  #配置文件名
+      profile: dev  #读取文件的后缀
+      uri: http://localhost:3344  #配置中心的地址
+      #这四个属性连起来就是配置中心暴露的接口地址，http://localhost:3344/master/config-dev文件
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+eureka:
+  client:
+    #将服务注册到eureka
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka
+#暴露监控端点，actuator的端点包括info，health...等
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

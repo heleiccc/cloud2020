@@ -1,0 +1,28 @@
+server:
+  port: 8401
+spring:
+  application:
+    name: cloud-sentienl-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: http://localhost:8848
+    sentinel:
+      transport:
+        #配置监控的sentinel的地址
+        dashboard: http://localhost:8080
+        #sentinel监控此微服务的端口，默认8719，如果被占用就+1，直到找到一个未被占用的端口
+        port: 8719
+      datasource:
+        ds1:
+          nacos:
+            server-addr: localhost:8848
+            dataId: ${spring.application.name}
+            groupId: DEFAULT_GROUP
+            data-type: json
+            rule-type: flow
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

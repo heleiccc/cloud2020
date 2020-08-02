@@ -1,0 +1,15 @@
+server:
+  port: 80
+spring:
+  application:
+    name: cloud-consumer-feign-hystrix-order
+eureka:
+  client:
+    register-with-eureka: false
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka
+ribbon:
+  ReadTimeout: 5000
+feign:
+  hystrix:
+    enabled: true #让feign支持hystrix通配服务降级

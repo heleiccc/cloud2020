@@ -1,0 +1,9 @@
+server:
+  port: 8004
+
+spring:
+  application:
+    name: cloud-payment-server #实例名 集群时保持一致
+  cloud:
+    zookeeper:
+      connect-string: 192.168.182.130:2181 #zookeeper注册中心地址
